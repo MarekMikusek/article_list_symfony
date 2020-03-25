@@ -9,7 +9,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Body (first 50 chars)</th>
+                <th>Body <small>(first 50 chars)</small></th>
                 <th>Illustration</th>
                 <th>Actions</th>
             </tr>
@@ -22,14 +22,19 @@
         <td>{{ article.body | length>30 ? article.body | slice(0,30) ~ '...' : article.body }}</td>
         <td>{{ article.photo }}</td>
         <td>
-            <a href="/article/{{ article.id }}"><button class="btn btn-success">Edit</button></a>
-            <a href="/article"><button class="btn btn-info">Show</button></a>
-            <a href="/article"><button class="btn btn-danger">Delete</button></a>
+            <a href="/article/edit/{{article.id}}"><button class="btn btn-success">Edit</button></a>
+            <a href="/article/{{ article.id }}"><button class="btn btn-info">Show</button></a>
+            <a href="#"><button class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</button></a>
         </td>
     </tr>
     {% endfor %}
     </table>
 {% else %}
-    <p>Sorry, no articles to display :)</p>
+    <p class="h2">Sorry, no articles to display :)</p>
 {% endif %}
+<a href="/article/new"><button class="btn btn-warning">Add new article</button></a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="./js/main.js"></script>
 {% endblock %}
