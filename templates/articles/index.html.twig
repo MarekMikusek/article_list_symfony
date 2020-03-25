@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Articles list</h1>
+{% if articles %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Body (first 50 chars)</th>
+                <th>Illustration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    {% for article in articles %}
+    <tr>
+        <td>{{ article.id }}</td>
+        <td>{{ article.title }}</td>
+        <td>{{ article.author }}</td>
+        <td>{{ article.body | length>30 ? article.body | slice(0,30) ~ '...' : article.body }}</td>
+        <td>{{ article.photo }}</td>
+        <td>
+            <a href="/article/{{ article.id }}"><button class="btn btn-success">Edit</button></a>
+            <a href="/article"><button class="btn btn-info">Show</button></a>
+            <a href="/article"><button class="btn btn-danger">Delete</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>Sorry, no articles to display :)</p>
+{% endif %}
+{% endblock %}

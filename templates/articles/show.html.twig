@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <p class="h1">{{ article.title }}</p>
+    <p class="h4 mb-5">by {{ article.author }}</p>
+    <div class="sm-12 md-6">{{ article.photo }}</div>
+    <div class="sm-12 md-6">{{ article.body }}</div>
+    <hr>
+    <a href="/"><button class="btn btn-info">Back to articles list</button></a>
+
+</div>    
+{% endblock %}
